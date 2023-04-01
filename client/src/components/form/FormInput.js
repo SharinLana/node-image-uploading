@@ -1,10 +1,10 @@
 import React from "react";
 
-const FormInput = ({labelText, name, type}) => {
+const FormInput = ({labelText, name, type, className}) => {
   return (
     <div className="input-container">
-      <label htmlFor={name} className="label">{labelText}</label>
-      <input type={type} name={name} className="input"/>
+      <label htmlFor={name} >{labelText}</label>
+      <input type={type} name={name} className={className}/>
     </div>
   );
 };

@@ -75,8 +75,39 @@ label {
 
 .output-container {
   margin-top: 50px;
+  margin-bottom: 30px;
   width: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.item-container {
+  width: 250px;
+  margin: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 3px 10px grey;
+  border-radius: 6px;
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.info-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
 }

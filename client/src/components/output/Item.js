@@ -2,11 +2,11 @@ import React from "react";
 
 const Item = ({ title, price, image }) => {
   return (
-    <div>
+    <div className="item-container">
       <img src={image} alt={title} />
-      <div>
-        <p>{title}</p>
-        <p>{price}</p>
+      <div className="info-container">
+        <p className="title">{title}</p>
+        <p className="price">$ {price}</p>
       </div>
     </div>
   );

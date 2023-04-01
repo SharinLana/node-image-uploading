@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="app-container">
       <h3 className="app-name">Node Image Upload</h3>
+      <hr className="hr"/>
       <Form />
       <ItemContainer />
     </div>

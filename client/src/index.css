@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EEEEEE;
 }
 
 code {
@@ -24,6 +25,7 @@ code {
   align-self: flex-start;
   margin-left: 20px;
   font-size: 30px;
+  color: #0D7377;
 }
 
 form {
@@ -35,10 +37,17 @@ form {
   padding: 30px 0px;
   border-radius: 6px;
   box-shadow: 0px 5px 12px grey;
+  background-color: white;
+  transition: 0.3s ease-in-out all;
+}
+
+form:hover {
+  box-shadow: 0px 10px 28px grey;
 }
 
 .form-header {
   margin: 0px 0px 10px 0px;
+  color: #0D7377
 }
 
 .input-container {
@@ -53,6 +62,7 @@ form {
 label {
   font-size: 16px;
   margin-bottom: 6px;
+  color: #212121;
 }
 
 .input {
@@ -60,6 +70,7 @@ label {
   height: 25px;
   border-radius: 4px;
   border: 1px solid grey;
+  padding-left: 8px;
 }
 
 .btn {
@@ -71,6 +82,13 @@ label {
   font-weight: 600;
   padding: 10px;
   border-radius: 4px;
+  background-color: #0D7377;
+  color: white;
+  transition: 0.4s ease-in-out all;
+}
+
+.btn:hover {
+  background-color: #32E0C4;
 }
 
 .output-container {
@@ -91,6 +109,7 @@ label {
   align-items: center;
   box-shadow: 0px 3px 10px grey;
   border-radius: 6px;
+  background-color: white;
 }
 
 img {
@@ -109,5 +128,11 @@ img {
 
 .title {
   font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.price {
+  color: #0D7377;
   font-weight: 600;
 }

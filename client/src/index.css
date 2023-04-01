@@ -47,7 +47,8 @@ form:hover {
 
 .form-header {
   margin: 0px 0px 10px 0px;
-  color: #0D7377
+  color: #0D7377;
+  font-size: 26px;
 }
 
 .input-container {
@@ -71,6 +72,21 @@ label {
   border-radius: 4px;
   border: 1px solid grey;
   padding-left: 8px;
+}
+
+input::file-selector-button {
+  font-weight: bold;
+  color: #0D7377;
+  padding: 6px 16px;
+  border: 1px solid #0D7377;
+  border-radius: 3px;
+  background-color: transparent;
+  transition: 0.3s ease-in-out all;
+}
+
+input::file-selector-button:hover {
+  color: #929191;
+  border: 1px solid #929191;
 }
 
 .btn {

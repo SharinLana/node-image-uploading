@@ -23,7 +23,7 @@ const dummyItems = [
 ];
 const ItemContainer = () => {
   return (
-    <div>
+    <div className="output-container">
       {dummyItems.map((item) => {
         return (
           <Item

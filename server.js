@@ -9,9 +9,11 @@ mongoose.set("strictQuery", true);
 
 const pageNotFound = require("./middleware/not-found");
 const errorHadler = require("./middleware/error");
+const productRouter = require("./routes/product-routes");
 
 const port = process.env.port || 3100;
 
+app.use("/api/v1/products", productRouter);
 app.use(errorHadler);
 app.use(pageNotFound);
 

@@ -3,4 +3,9 @@ const BadRequestError = require("./badRequest");
 const UnauthorizedError = require("./unauthorized");
 const CustomError = require("./customError");
 
-exports = { NotFoundError, BadRequestError, UnauthorizedError, CustomError };
+module.exports = {
+  NotFoundError,
+  BadRequestError,
+  UnauthorizedError,
+  CustomError,
+};

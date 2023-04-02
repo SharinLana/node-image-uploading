@@ -11,6 +11,9 @@ const pageNotFound = require("./middleware/not-found");
 const errorHadler = require("./middleware/error");
 const productRouter = require("./routes/product-routes");
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 const port = process.env.port || 3100;
 
 app.use("/api/v1/products", productRouter);

@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useAppContext } from "../../context/appContext";
 import FormInput from "./FormInput";
 
 const Form = () => {
-  const { getValue, title, price, addImage } = useAppContext();
-  const [imageFile, setImageFile] = useState();
+  const { getValue, title, price, addImage, addProduct, getAllProducts } =
+    useAppContext();
 
   const getInputValueHandler = (e) => {
     getValue({ name: e.target.name, value: e.target.value });
   };
 
-  const getImageFile = (e) => {
-    setImageFile(e.target.files[0]);
-  };
-
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    addImage(imageFile);
+    addProduct();
   };
+
+  // useEffect(() => {
+  //   getAllProducts();
+  //   // eslint-disable-next-line
+  // }, [formSubmitHandler]);
 
   return (
     <form onSubmit={formSubmitHandler}>
@@ -44,7 +45,7 @@ const Form = () => {
         type="file"
         // value={image.name}
         className="file"
-        onChange={getImageFile}
+        onChange={(e) => addImage(e.target.files[0])}
       />
       <button type="submit" className="btn">
         Submit

@@ -3,12 +3,12 @@ import { useAppContext } from "../../context/appContext";
 import Item from "./Item";
 
 const ItemContainer = () => {
-  const { getAllProducts, products } = useAppContext();
+  const { getAllProducts, products, formSubmitted } = useAppContext();
 
   useEffect(() => {
     getAllProducts();
     // eslint-disable-next-line
-  }, []);
+  }, [formSubmitted]);
 
   return (
     <div className="output-container">

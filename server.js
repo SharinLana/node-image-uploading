@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 const app = express();
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, "./client")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(fileUpload());
+app.use(cors());
 
 const port = process.env.port || 3100;
 

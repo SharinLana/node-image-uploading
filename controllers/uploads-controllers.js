@@ -12,7 +12,7 @@ const uploadImage = async (req, res, next) => {
   );
   // then create an "uploads" folder in the "client/public"
 
-  await productImage.mv(imagePath); //mv() is an express-fileupload method
+  await productImage.mv(imagePath); //mv() - move - is an express-fileupload method
   return res
     .status(StatusCodes.OK)
     .json({ image: { src: `/public/uploads/${productImage.name}` } });

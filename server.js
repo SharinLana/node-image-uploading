@@ -5,10 +5,16 @@ const express = require("express");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
+const cloudinary = require("cloudinary").v2; // MUST SPECIFY v2
 
 const app = express();
 dotenv.config();
 mongoose.set("strictQuery", true);
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const pageNotFound = require("./middleware/not-found");
 const errorHadler = require("./middleware/error");

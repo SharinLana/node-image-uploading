@@ -1,7 +1,7 @@
 import React, { useContext, useReducer } from "react";
 import axios from "axios";
 import reducer from "./reducer";
-import {} from "./actions";
+import {GET_PRODUCTS} from "./actions";
 
 const initialState = {
   products: [],

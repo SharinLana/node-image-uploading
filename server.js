@@ -2,6 +2,7 @@ require("express-async-errors");
 const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
+const fileUpload = require("express-fileupload");
 
 const app = express();
 dotenv.config();
@@ -13,6 +14,7 @@ const productRouter = require("./routes/product-routes");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(fileUpload());
 
 const port = process.env.port || 3100;
 

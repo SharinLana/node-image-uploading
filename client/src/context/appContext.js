@@ -1,13 +1,19 @@
 import React, { useContext, useReducer } from "react";
 import axios from "axios";
 import reducer from "./reducer";
-import { GET_PRODUCTS, GET_INPUT_VALUE, ADD_IMAGE } from "./actions";
+import {
+  GET_PRODUCTS,
+  GET_INPUT_VALUE,
+  ADD_IMAGE,
+  ADD_PRODUCT,
+} from "./actions";
 
 const initialState = {
   products: [],
   title: "",
   price: "",
   image: "",
+  formSubmitted: false,
 };
 
 const AppContext = React.createContext();
@@ -58,9 +64,19 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const addProduct = async () => {
+    try {
+      const { title, price, image } = state;
+      await authFetch.post("/", { title, price, image });
+      dispatch({ type: ADD_PRODUCT });
+    } catch (err) {
+      console.log(err.response.data.message);
+    }
+  };
+
   return (
     <AppContext.Provider
-      value={{ ...state, getAllProducts, getValue, addImage }}
+      value={{ ...state, getAllProducts, getValue, addImage, addProduct }}
     >
       {children}
     </AppContext.Provider>

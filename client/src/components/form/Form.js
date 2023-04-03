@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAppContext } from "../../context/appContext";
 import FormInput from "./FormInput";
 
 const Form = () => {
-  const { getValue, title, price, addImage, addProduct, getAllProducts } =
-    useAppContext();
+  const { getValue, title, price, addImage, addProduct } = useAppContext();
 
   const getInputValueHandler = (e) => {
     getValue({ name: e.target.name, value: e.target.value });
@@ -14,11 +13,6 @@ const Form = () => {
     e.preventDefault();
     addProduct();
   };
-
-  // useEffect(() => {
-  //   getAllProducts();
-  //   // eslint-disable-next-line
-  // }, [formSubmitHandler]);
 
   return (
     <form onSubmit={formSubmitHandler}>

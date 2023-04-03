@@ -7,6 +7,7 @@ const ItemContainer = () => {
 
   useEffect(() => {
     getAllProducts();
+    // eslint-disable-next-line
   }, []);
 
   return (

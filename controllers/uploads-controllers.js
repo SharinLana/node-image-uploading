@@ -3,7 +3,7 @@ const Product = require("../models/productModel");
 const { StatusCodes } = require("http-status-codes");
 
 const uploadImage = async (req, res, next) => {
-  // console.log(req.files);
+//   console.log(req.files);
   const productImage = req.files.image;
 
   const imagePath = path.join(

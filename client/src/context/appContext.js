@@ -1,7 +1,7 @@
 import React, { useContext, useReducer } from "react";
 import axios from "axios";
 import reducer from "./reducer";
-import { GET_PRODUCTS, GET_INPUT_VALUE } from "./actions";
+import { GET_PRODUCTS, GET_INPUT_VALUE, ADD_IMAGE } from "./actions";
 
 const initialState = {
   products: [],
@@ -37,8 +37,31 @@ const AppProvider = ({ children }) => {
     dispatch({ type: GET_INPUT_VALUE, payload: { name, value } });
   };
 
+  const addImage = async (imageFile) => {
+    try {
+      const {
+        data: {
+          image: { src },
+        },
+      } = await authFetch.post(
+        "/uploads",
+        { image: imageFile },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      dispatch({ type: ADD_IMAGE, payload: { src } });
+    } catch (err) {
+      console.log(err.response.data.message);
+    }
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, getAllProducts, getValue }}>
+    <AppContext.Provider
+      value={{ ...state, getAllProducts, getValue, addImage }}
+    >
       {children}
     </AppContext.Provider>
   );

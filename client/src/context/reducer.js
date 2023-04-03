@@ -14,6 +14,10 @@ const reducer = (state, action) => {
     return { ...state, [action.payload.name]: action.payload.value };
   }
 
+  if (action.type === ADD_IMAGE) {
+    return { ...state, image: action.payload.src };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 

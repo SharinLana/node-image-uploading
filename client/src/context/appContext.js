@@ -1,10 +1,13 @@
 import React, { useContext, useReducer } from "react";
 import axios from "axios";
 import reducer from "./reducer";
-import { GET_PRODUCTS } from "./actions";
+import { GET_PRODUCTS, GET_INPUT_VALUE } from "./actions";
 
 const initialState = {
   products: [],
+  title: "",
+  price: "",
+  image: "",
 };
 
 const AppContext = React.createContext();
@@ -26,12 +29,18 @@ const AppProvider = ({ children }) => {
         payload: { products },
       });
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error.response.data.message);
     }
   };
 
+  const getValue = ({ name, value }) => {
+    dispatch({ type: GET_INPUT_VALUE, payload: { name, value } });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, getAllProducts }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, getAllProducts, getValue }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

@@ -1,4 +1,5 @@
 require("express-async-errors");
+const path = require("path");
 const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -12,6 +13,7 @@ const pageNotFound = require("./middleware/not-found");
 const errorHadler = require("./middleware/error");
 const productRouter = require("./routes/product-routes");
 
+app.use(express.static(path.join(__dirname, "./client")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(fileUpload());

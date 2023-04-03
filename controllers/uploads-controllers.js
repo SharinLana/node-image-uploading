@@ -1,10 +1,22 @@
 const path = require("path");
-const Product = require("../models/productModel");
 const { StatusCodes } = require("http-status-codes");
+const { BadRequestError } = require("../errors/index");
 
 const uploadImage = async (req, res, next) => {
   // console.log(req.files);
+  if (!req.files) {
+    throw new BadRequestError("No File Uploaded!");
+  }
   const productImage = req.files.image;
+
+  if (!productImage.mimetype.startsWith("image")) {
+    throw new BadRequestError("The File Is Not an Image!");
+  }
+
+  const maxSize = 1000;
+  if (productImage.size > maxSize) {
+    throw new BadRequestError("Please upload an image smaller than 1KB!");
+  }
 
   const imagePath = path.join(
     __dirname,

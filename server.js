@@ -23,7 +23,7 @@ const productRouter = require("./routes/product-routes");
 app.use(express.static(path.join(__dirname, "./client")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true })); // required for accessing the uploaded files and is used in upload-controllers.js
 app.use(cors());
 
 const port = process.env.port || 3100;

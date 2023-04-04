@@ -20,7 +20,9 @@ const pageNotFound = require("./middleware/not-found");
 const errorHadler = require("./middleware/error");
 const productRouter = require("./routes/product-routes");
 
-app.use(express.static(path.join(__dirname, "./client")));
+// only when ready to deploy
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// app.use(express.static(path.join(__dirname, "./client")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true })); // required for accessing the uploaded files and is used in upload-controllers.js

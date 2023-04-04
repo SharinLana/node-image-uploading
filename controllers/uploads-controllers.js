@@ -1,8 +1,10 @@
 const path = require("path");
+const fs = require("fs");
 const cloudinary = require("cloudinary").v2; // v2 is a MUST!
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors/index");
 
+// Inactive controller (made to test file uploading process withouth cloudinary)
 const uploadProductImage = async (req, res, next) => {
   // console.log(req.files);
   if (!req.files) {
@@ -53,6 +55,8 @@ const uploadImage = async (req, res, next) => {
   );
 
   // console.log(result);
+  // To prevent storing temp files on the server
+  fs.unlinkSync(req.files.image.tempFilePath);
   return res.status(StatusCodes.OK).json({ image: { src: result.secure_url } });
 };
 

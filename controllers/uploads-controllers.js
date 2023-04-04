@@ -34,6 +34,19 @@ const uploadProductImage = async (req, res, next) => {
 };
 
 const uploadImage = async (req, res, next) => {
+  if (!req.files) {
+    throw new BadRequestError("No File Uploaded!");
+  }
+
+  if (!req.files.image.mimetype.startsWith("image")) {
+    throw new BadRequestError("The File Is Not an Image!");
+  }
+
+  const maxSize = 1000000;
+  if (req.files.image.size > maxSize) {
+    throw new BadRequestError("Please upload an image smaller than 1MB!");
+  }
+
   const result = await cloudinary.uploader.upload(
     req.files.image.tempFilePath,
     { use_filename: true, folder: "image-upload" } // the folder name from Cloudiary
